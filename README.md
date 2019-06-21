@@ -1,8 +1,8 @@
-# Ruby Smart_App Tech test
+## Ruby Smart_App Tech test
 
 This challenge is written in Ruby and tested with Rspec
 
-# The problem
+## The problem
 Write a ruby script that:
 Receives a log as argument (webserver.log is provided)
 Returns the following:
@@ -10,7 +10,7 @@ Returns the following:
 
 > list of webpages with most unique page views also ordered
 
-# Getting started
+## Getting started
 
 **Clone to you local machine**
 
