@@ -29,6 +29,7 @@ describe Parser do
       end
     end
     describe '#parse' do
+      let(:file) { double :file, each: line }
       context 'open file' do
         before do
           allow(File).to receive(:open).with(filename, 'r').and_return(:file)
