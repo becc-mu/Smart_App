@@ -4,6 +4,7 @@ describe Parser do
   describe '#Initialise' do
     let(:described_class) { Parser }
     let(:filename) { 'filename' }
+    let(:process_data) { double process_data }
 
     it '.creates parser class' do
       expect(described_class).to eq Parser
@@ -14,15 +15,25 @@ describe Parser do
   end
 
   describe '#processor' do
-    let(:processor) { double :processor, new: records}
+    let(:process_data) { double :process_data, new: ''}
     let(:filename) { 'filename'}
     context '#raise error' do
       before do
-        allow(File).to receive(:open) { raise error }
+        allow(File).to receive(:open) { raise error } unless File.exist?(filename)
       end
       it 'raise error' do
-        expect {  subject.parse_file }.to raise_error('File not found!') unless File.exist?(filename)
-        subject.parse_file(filename, processor)
+        expect {  subject.parse_file(filename, process_data) }.to raise_error('File not found!') unless File.exist?(filename)
+        subject.parse_file(filename, process_data)
+      end
+    end
+    describe '#parse' do
+      context 'open file' do
+        before do
+          allow(File).to receive(:open).with(filename, 'r').and_yield(:file)
+        end
+        it 'reads log file' do
+          subject.parse_file(filename, process_data)
+        end
       end
     end
   end
