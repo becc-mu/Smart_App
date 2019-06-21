@@ -1,5 +1,4 @@
 require 'processor'
-
 describe Processor do
   describe '#Initialize' do
     let(:records) { {} }
