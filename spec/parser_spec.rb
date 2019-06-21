@@ -30,12 +30,13 @@ describe Parser do
     end
     describe '#parse' do
       let(:file) { double :file, each: line }
+      let(:line) { '/index 451.106.204.921' }
       context 'open file' do
         before do
           allow(File).to receive(:open).with(filename, 'r').and_return(:file)
         end
         it 'reads log file' do
-          expect(file).to receive(:each).and_return(line)
+          allow(file).to receive(:each).and_yield(:line)
           expect(subject.parse_file(filename, results))
         end
       end
