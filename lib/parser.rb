@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'processor'
 require_relative '../environment'
+require_relative 'processor'
 
 class Parser
   attr_reader :filename, :results
@@ -11,17 +11,21 @@ class Parser
   end
 
   def parse_file
-    filename = './fixtures/webserver.log'
-
-     # @results = results
-    # file = ''
-    raise 'File not found!' unless File.exist?(filename)
-
+    path = './fixtures/webserver.log'
+    filename = path
+      @results = results
+     raise 'File not found!' unless File.exists? filename
     File.open(filename, 'r') do |file|
       file.each do |line|
-      page_views = line.split(' ')
-      results.process_data(page_views)
+        page, ip = line.split(' ')
+      puts "#{page}"
+       results.process_data(page, ip)
       end
     end
+    results
+  end
+
+  def file_path(filename)
+    "#{@filename}"
   end
 end
