@@ -1,1 +1,19 @@
 require: rubocop-rails
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'spec/**/**'
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/**/**'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'spec/**/**'
+    - 'Gemfile'
+    - 'Gemfile.lock'

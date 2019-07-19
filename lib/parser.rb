@@ -2,28 +2,31 @@
 
 require_relative '../environment'
 # require_relative 'processor'
-
 class Parser
-  attr_reader :filename, :results
-  def initialize(filename)
+  attr_accessor :filename, :results
+  def initialize(_filename)
     @filename = 'filename'
-    @results = Hash.new { |k, v| k[v] = [] }
+    @results = Processor.new(results)
   end
 
   def parse_file
     path = './fixtures/webserver.log'
     filename = path
-    raise 'File not found!' unless File.exists? filename
+    raise 'File not found!' unless File.exist? filename
 
+    data = Hash.new { |k, v| k[v] = [] }
     File.open(filename, 'r') do |file|
-      page = file.each do |line|
-      ip = line.split(' ')
-        @results[page] << ip
+      file.each do |line|
+        ip = line.split(' ')
+        data[:pages] << ip
+        # puts "#{ip}"
+        @results.update_data(data)
       end
     end
     @results
   end
-  def file_path(filename)
-    "#{@filename}"
+
+  def file_path(_filename)
+    @filename.to_s
   end
 end
