@@ -20,7 +20,7 @@ $ git clone
 
 **Setting up**
 
-1. Initialise Ruby with Bundler, `bundle init`
+1. Initialise Ruby with Bundler, `bundle init` if your haven't installed Ruby before
 
 2. Run `bundle install` to install dependencies
 
