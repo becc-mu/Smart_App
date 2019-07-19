@@ -9,6 +9,7 @@ describe Parser do
     let(:page) { '/about/2' }
     let(:ip) { '444.701.448.104' }
     let(:results) { double :results, process_data: ''}
+    let(:results_class) { double :results_class, new: results }
 
     it '#initialize' do
       expect(described_class).to eq Parser
