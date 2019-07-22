@@ -35,17 +35,23 @@ ruby parser.rb fixtures/webserver.log
 
 ```
 
-**To Run Test**
+**Test coverage**
 
-Run in the command line
+COVERAGE:  94.32% -- 83/88 lines in 5 files
+
+### To Run in the command line
 
 ```
 rspec
 
 ```
-**To Run Linter**
+**Linter**
 
-Run in the command line
+Inspecting 7 files
+.......
+7 files inspected, no offenses detected
+
+### To Run in the command line
 
 ```
 rubocop

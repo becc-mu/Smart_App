@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require_relative '../environment'
-# require_relative 'processor'
+require_relative 'processor'
+
+# Parser calss responsible for opening and ouputing log data
 class Parser
-  attr_accessor :filename, :results
+  attr_accessor :filename, :data
   def initialize(_filename)
     @filename = 'filename'
-    @results = Processor.new(results)
+    @data = Processor.new(data)
   end
 
   def parse_file
@@ -17,16 +19,10 @@ class Parser
     data = Hash.new { |k, v| k[v] = [] }
     File.open(filename, 'r') do |file|
       file.each do |line|
-        ip = line.split(' ')
-        data[:pages] << ip
-        # puts "#{ip}"
-        @results.update_data(data)
+        results = line.split(' ')
+        data[:pages] << results
       end
     end
-    @results
-  end
-
-  def file_path(_filename)
-    @filename.to_s
+    data
   end
 end
