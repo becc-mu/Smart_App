@@ -20,7 +20,6 @@ class Parser
     File.open(filename, 'r') do |file|
       file.each do |line|
         results = line.split(' ')
-        { page: results[0], ip: results[1] }
         data[:pages] << results
       end
     end

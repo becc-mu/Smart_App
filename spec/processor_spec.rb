@@ -10,13 +10,12 @@ describe Processor do
   let(:page) { '/help_page/1' }
   let(:ip) { '126.318.035.038' }
   it 'updates log data entries' do
-    log_file = Parser.new('./fixtures/webserver.log')
     subject.instance_variable_set(:@data, page => { ip => 1 })
     subject.update_data(data)
   end
   it 'returns total page views' do
     subject.update_data(log_data)
-    p total_views_count = subject.total_views_count(results)
+    total_views_count = subject.total_views_count(results)
     expect(total_views_count['/help_page/1']).to eq(4)
   end
 
