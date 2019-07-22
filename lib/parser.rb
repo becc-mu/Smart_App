@@ -8,7 +8,7 @@ class Parser
   attr_accessor :filename, :data
   def initialize(_filename)
     @filename = 'filename'
-    @data = Processor.new(data)
+    @data = Processor.new.data
   end
 
   def parse_file
@@ -20,6 +20,7 @@ class Parser
     File.open(filename, 'r') do |file|
       file.each do |line|
         results = line.split(' ')
+        { page: results[0], ip: results[1] }
         data[:pages] << results
       end
     end
